@@ -1,1 +1,3 @@
-__pycache__/\n.pytest_cache/\nFUZZ_TEST_REPORT.json\n
+__pycache__/
+.pytest_cache/
+FUZZ_TEST_REPORT.json
