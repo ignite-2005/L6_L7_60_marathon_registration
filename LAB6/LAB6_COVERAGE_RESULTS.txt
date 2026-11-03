@@ -1,0 +1,33 @@
+LAB 6 COVERAGE EVIDENCE
+Student SRN: PES1UG24CS484
+Application: marathon_registration.py
+
+CODE COVERAGE RUN
+Command:
+coverage run --source=marathon_registration -m pytest -q CodeCoverageTest_PES1UG24CS484_application.py
+Result: 4 passed
+Command:
+coverage report -m
+Name                       Stmts   Miss  Cover   Missing
+--------------------------------------------------------
+marathon_registration.py      38      0   100%
+--------------------------------------------------------
+TOTAL                         38      0   100%
+
+BRANCH COVERAGE RUN
+Command:
+coverage run --branch --source=marathon_registration -m pytest -q BranchCoverageTest_PES1UG24CS484_application.py
+Result: 26 passed
+Command:
+coverage report -m
+Name                       Stmts   Miss Branch BrPart  Cover   Missing
+----------------------------------------------------------------------
+marathon_registration.py      38      0     28      0   100%
+----------------------------------------------------------------------
+TOTAL                         38      0     28      0   100%
+
+Notes:
+- These results were executed against the supplied application module in the provided ZIP.
+- The two test files were run separately as required by the Lab 6 handout.
+- Retake terminal screenshots on the student's own machine before submission, as the handout explicitly requests screenshots.
+- Lab 7 materials were not present in the supplied ZIP or the uploaded handout.
