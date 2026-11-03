@@ -4,6 +4,10 @@ import argparse, json, random, time
 from collections import Counter
 from pathlib import Path
 from typing import Any, Callable
+import sys
+
+# The application module is kept in the sibling LAB6 folder.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "LAB6"))
 from marathon_registration import entry_fee, finisher_status, start_wave
 
 SEED = 4842026
