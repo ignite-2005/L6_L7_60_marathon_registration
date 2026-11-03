@@ -74,7 +74,10 @@ def run_fuzz(iterations: int = 1000, seed: int = SEED):
         "seed": seed, "random_iterations": iterations, "total_inputs": len(cases),
         "calls_by_function": dict(function_counts),
         "exceptions_by_type": dict(exception_counts),
-        "exception_findings": len(findings), "slow_calls_over_50ms": slow_calls,
+        "exception_findings": len(findings),
+        "expected_validation_rejections": sum(1 for item in findings if item["exception"] == "ValueError"),
+        "unexpected_exception_findings": sum(1 for item in findings if item["exception"] != "ValueError"),
+        "slow_calls_over_50ms": slow_calls,
         "total_execution_seconds": round(elapsed_total, 6),
         "average_call_microseconds": round(elapsed_total / len(cases) * 1_000_000, 3),
         "max_call_milliseconds": round(max_call * 1000, 3),
@@ -94,6 +97,8 @@ def main():
     REPORT_PATH.write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(f"Fuzz testing completed: {report['total_inputs']} inputs")
     print(f"Exceptions captured: {report['exception_findings']}")
+    print(f"Validation rejections (ValueError): {report['expected_validation_rejections']}")
+    print(f"Unexpected exceptions: {report['unexpected_exception_findings']}")
     print(f"Slow calls (>50 ms): {report['slow_calls_over_50ms']}")
     print(f"Total execution: {report['total_execution_seconds']} seconds")
     print(f"Report saved to: {REPORT_PATH}")
